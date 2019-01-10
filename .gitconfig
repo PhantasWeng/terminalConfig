@@ -1,0 +1,72 @@
+[user]
+	name = PhantasWeng
+	email = bensonuong@gmail.com
+
+[alias]
+	st = status
+	co = checkout
+  br = branch
+  brs = branch -vv
+  brc = "!git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done"
+  cm = commit
+  ls = ls-tree -r --name-only
+  df = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
+	d = difftool
+  logg = log --graph
+  logs = log --stat --graph
+
+#git diff-so-fancy
+[color "diff"]
+  meta = yellow bold
+  commit = green bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[color]
+	ui = true
+
+[core]
+	excludesfile = /Users/phantasweng/.gitignore_global
+  # editor = "subl -n -w"
+  editor = "vim"
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+#git mergetool
+[merge]
+  tool = opendiff
+
+[push]
+	default = simple
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[commit]
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
