@@ -1,0 +1,2 @@
+# terminalConfig
+my terminalConfig backup
