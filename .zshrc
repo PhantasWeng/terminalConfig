@@ -108,6 +108,18 @@ alias aws='ssh ubuntu@13.115.142.18'
 
 alias grep="grep --color=auto"
 
+function vueInit() {
+  touch .env.development
+  touch .env.production
+  touch vue.config.js
+}
+
+function updateI18n() {
+  curl https://static.owlting.com/booking/lang/v$1/zh_TW.json > ~/Code/owlnest/owlnest_booking_site_v2/lang/zh_TW.json;
+  curl https://static.owlting.com/booking/lang/v$1/en.json > ~/Code/owlnest/owlnest_booking_site_v2/lang/en.json;
+  curl https://static.owlting.com/booking/lang/v$1/ja.json > ~/Code/owlnest/owlnest_booking_site_v2/lang/ja.json;
+}
+
 #port {port}
 function port() {sudo lsof -i :$1}
 
@@ -151,15 +163,17 @@ if [[ -e $HOME/.motd ]]; then cat $HOME/.motd; fi
 
 
 ###-tns-completion-start-###
-if [ -f /Users/phantasweng/.tnsrc ]; then 
-    source /Users/phantasweng/.tnsrc 
+if [ -f /Users/phantasweng/.tnsrc ]; then
+    source /Users/phantasweng/.tnsrc
 fi
 export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
 ###-tns-completion-end-###
 
 ###-tns-completion-start-###
-if [ -f /Users/phantasweng/.tnsrc ]; then 
-    source /Users/phantasweng/.tnsrc 
+if [ -f /Users/phantasweng/.tnsrc ]; then
+    source /Users/phantasweng/.tnsrc
 fi
 ###-tns-completion-end-###
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
