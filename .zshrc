@@ -70,7 +70,7 @@ plugins=(
   git-open
   zsh-completions
   zsh-autosuggestions
-  zsh-syntax-highlighting
+  # zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -133,6 +133,9 @@ function docker-stop() {cd ~/Dockers/$1_dockerfiles; docker-compose stop; cd -;}
 function docker-ssh() {cd ~/Dockers/$1_dockerfiles; docker-compose exec workspace bash; cd -;}
 function docker-stopall() {docker stop $(docker ps -a -q); cd -;}
 
+alias ota="cd ~/Code/owlota/owlota-frontend"
+alias pms="cd ~/Code/owlnest/owlnest_booking_site_v2/BE/admin"
+alias be="cd ~/Code/owlnest/owlnest_booking_engine"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -166,8 +169,9 @@ if [[ -e $HOME/.motd ]]; then cat $HOME/.motd; fi
 if [ -f /Users/phantasweng/.tnsrc ]; then
     source /Users/phantasweng/.tnsrc
 fi
+
 export NVM_DIR="$HOME/.nvm"
-  . "/usr/local/opt/nvm/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 ###-tns-completion-end-###
 
 ###-tns-completion-start-###
@@ -177,3 +181,5 @@ fi
 ###-tns-completion-end-###
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+source /Users/phantasweng/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
